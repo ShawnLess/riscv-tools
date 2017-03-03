@@ -6,6 +6,13 @@
 . build.common
 
 echo "Starting RISC-V Toolchain build process"
+export CC=/opt/rh/devtoolset-2/root/usr/bin/gcc
+export CXX=/opt/rh/devtoolset-2/root/usr/bin/g++
+
+#. build.depends
+cd riscv-gnu-toolchain/riscv-gcc/ 
+./contrib/download_prerequisites
+cd -
 
 build_project riscv-fesvr --prefix=$RISCV
 build_project riscv-isa-sim --prefix=$RISCV --with-fesvr=$RISCV
